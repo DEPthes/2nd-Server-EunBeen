@@ -14,7 +14,7 @@ class MemberServiceTest {
     MemberService memberService;
     MemoryMemberRepository memberRepository;
     MemoryMemberRepository memberMemoryRepository;
-    //beforEach로 먼저 memberRepository를 만들고, 이를 memberServicedp 넣어주면서 같은 member
+    //beforEach로 먼저 memberRepository를 만들고, 이를 memberService에 넣어주면서 같은 memberRepository 사용
     @BeforeEach
     public void beforeEach() {
         memberRepository=new MemoryMemberRepository();
