@@ -2,8 +2,7 @@
 build/
 gradle/wrapper/gradle-wrapper.jar
 gradle-wrapper.properties
-!**/src/main/**/build/
-!**/src/test/**/build/
+
 
 build.gradle
 gradlew
@@ -12,11 +11,6 @@ settings.gradle
 
 ### IntelliJ IDEA ###
 .idea
-*.iws
-*.iml
-*.ipr
-out/
-!**/src/main/**/out/
-!**/src/test/**/out/
+
 
 
