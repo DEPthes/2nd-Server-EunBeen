@@ -1,5 +1,5 @@
 
--- 테이블 관리를 위해 ddl.sql 파일 생성해서 사용
+-- 테이블 관리를 위해 ddl.sql 파일 생성해서 사용한다.
 drop table if exists member CASCADE;
 create table member
 (
