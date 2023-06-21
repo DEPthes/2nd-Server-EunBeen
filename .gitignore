@@ -10,7 +10,7 @@ gradlew
 gradlew.bat
 settings.gradle
 
-### IntelliJ IDEA
+### IntelliJ IDEA ###
 .idea
 *.iws
 *.iml
@@ -20,9 +20,3 @@ out/
 !**/src/test/**/out/
 
 
-
-# IntelliJ project files
-.idea
-*.iml
-out
-gen
