@@ -10,7 +10,7 @@ gradlew
 gradlew.bat
 settings.gradle
 
-### IntelliJ IDEA ###
+### IntelliJ IDEA
 .idea
 *.iws
 *.iml
