@@ -42,13 +42,11 @@ public class JpaMain {
             List<Member> result=em.createQuery("select m from Member as m", Member.class)
                     .setFirstResult(5)
                     .setMaxResults(8)
-                    .getResultList(); ////5번부터 8개 get
+                    .getResultList(); ////5번부터 8개를 get.
 
 
             //하나의 transaction이 끝남->commit
             tx.commit();
-
-            //JPQL
 
         } catch (Exception e){
             //예외 발생 시 rollback
