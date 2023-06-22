@@ -10,7 +10,6 @@ import javax.persistence.Table;
 public class Member {
 
     @Id
-
     private Long id;
     private String name;
     public Long getId() {
