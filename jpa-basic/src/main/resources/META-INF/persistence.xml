@@ -16,13 +16,11 @@
             <property name="hibernate.show_sql" value="true"/><!-- sql query를 보여줌.-->
             <property name="hibernate.format_sql" value="true"/><!-- sql query를 정리해서 보여줌.-->
             <property name="hibernate.use_sql_comments" value="true"/><!-- sql의 comments를 보여줌.-->
-            <property name="hibernate.hbm2ddl.auto" value="create" /><!-- value="create" : 자동으로 Drop Table 이후 Create Table 실행 Option -->
+            <!-- value="create" : 자동으로 Drop Table 이후 Create Table 실행 Option -->
+            <!-- <property name="hibernate.hbm2ddl.auto" value="create" />-->
 
         </properties>
     </persistence-unit>
-
-
-
 
 </persistence>
 
