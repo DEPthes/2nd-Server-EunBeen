@@ -4,8 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+//Member Entity 생성
 @Entity
-@Table(name="User")
+@Table(name="member")
 //JPA를 사용한다고 알도록 annotation 사용
 public class Member {
 
