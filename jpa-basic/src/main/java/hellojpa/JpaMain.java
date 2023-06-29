@@ -23,16 +23,16 @@ public class JpaMain {
             //회원 등록
             //Member 객체 생성
 //            Member member=new Member();
-//
+
 //            member.setId(1L);
 //            member.setName("강영현");
-//
+
 //            em.persist(member); //member 저장
 
             //All data show
             //JPQL을 사용해 List로 결과를 받아 출력
 //            List<Member> result = em.createQuery("select m from Member as m", Member.class).getResultList();
-//
+
 //            for (Member member : result) {
 //                System.out.println("member.name = " + member.getName());
 //            }
@@ -40,17 +40,17 @@ public class JpaMain {
 
             //회원 이름 조회
 //            Member findMember = em.find(Member.class, 1L);
-//
+
 //            System.out.println(findMember.getName());
 
 
             //회원 수정 (resist 불필요)
             //id=2L인 "김민식" -> "최정"으로 update
 //            Member updateMember = em.find(Member.class, 2L);
-//
+
 //            updateMember.setName("최정");
-//
-//            //수정 내용 확인
+
+            //수정 내용 확인
 //            System.out.println("수정된 회원 이름");
 //            System.out.println(updateMember.getName());
 

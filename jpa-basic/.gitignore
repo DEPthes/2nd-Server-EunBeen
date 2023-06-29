@@ -8,6 +8,4 @@ out
 gen
 /target/
 /ex1-hello-jpa.iml
-/src/main/java/module-info.java
-target
-test
+/module-info.java
