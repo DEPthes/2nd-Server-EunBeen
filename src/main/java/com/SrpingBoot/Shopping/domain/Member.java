@@ -1,34 +1,31 @@
 package com.SrpingBoot.Shopping.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import lombok.Getter;
+import lombok.Setter;
+
 
 @Entity
 @Table(name="member")
-
+@Getter @Setter
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // 자동 생성 전략을 IDENTITY로 설정
+    @Column(name="ID")
     private Long id;
+
+    @NotEmpty
+    @Column(name="NAME")
     private String name;
 
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+//    @Embedded
+//    private Address address;
 
 
+
+//    @OneToMany(mappedBy="member") //연관 관계의 주인이 아님을 표시
+//    private List<Order> orders = new ArrayList<>();
 
 }
