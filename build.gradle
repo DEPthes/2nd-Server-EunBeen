@@ -34,6 +34,10 @@ dependencies {
 	implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: '3.1.1'
 	//.env를 위한 의존성
 	implementation 'io.github.cdimascio:java-dotenv:5.2.1'
+	//JSON 사용을 위한 jackson 의존성 추가
+	implementation 'com.fasterxml.jackson.core:jackson-databind'
+	implementation 'com.fasterxml.jackson.core:jackson-annotations'
+	implementation 'com.fasterxml.jackson.core:jackson-core'
 }
 
 tasks.named('test') {
