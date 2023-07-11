@@ -1,14 +1,15 @@
-package com.SrpingBoot.Shopping.domain;
+package com.SrpingBoot.Shopping.Member;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 
 @Entity
 @Table(name="member")
-@Getter @Setter
+@Getter
+@Builder
 public class Member {
 
     @Id
@@ -20,8 +21,19 @@ public class Member {
     @Column(name="NAME")
     private String name;
 
-//    @Embedded
-//    private Address address;
+    @NotEmpty
+    @Column(name="PASSWORD")
+    private String password;
+
+    @NotEmpty
+    @Column(name="EMAIL")
+    private String email;
+
+    @NotEmpty
+    @Column(name="POINT")
+    private int point;
+
+
 
 
 
