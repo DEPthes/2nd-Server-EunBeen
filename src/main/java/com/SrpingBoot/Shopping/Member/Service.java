@@ -4,20 +4,20 @@ import org.springframework.transaction.annotation.Transactional;
 
 @org.springframework.stereotype.Service
 public class Service {
-    private final Repository repository;
+    private final MemberRepository memberRepository;
 
-    public Service(Repository repository) {
-        this.repository = repository;
+    public Service(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
 
     @Transactional
     public Long join(Member member) {
-        Member savedMember = repository.save(member);
+        Member savedMember = memberRepository.save(member);
         return savedMember.getId();
     }
 
     public Member getMemberById(Long id) {
-        return repository.findById(id).orElse(null);
+        return memberRepository.findById(id).orElse(null);
     }
 
 
