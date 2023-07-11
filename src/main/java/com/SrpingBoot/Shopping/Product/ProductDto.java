@@ -1,4 +1,4 @@
 package com.SrpingBoot.Shopping.Product;
 
-public class Dto {
+public class ProductDto {
 }

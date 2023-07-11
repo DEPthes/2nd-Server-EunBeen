@@ -1,19 +1,31 @@
 package com.SrpingBoot.Shopping.Kakao;
 
+import jakarta.validation.Valid;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
 import java.io.*;
 import java.net.*;
 import java.util.*;
 
-@org.springframework.stereotype.Service
-public class Service {
+@Service
 
-    public String getToken(String code) throws IOException{
+public class KakaoService {
+
+    @Value("${kakao.client.id}")
+    private String CLIENT_ID;
+
+    @Value("${kakao.client.secret}")
+    private String CLIENT_SECRET;
+    @Value("${kakao.redirect.url}")
+    private String REDIRECT_URL;
+
+    public String getToken(String code) throws IOException {
         //인가코드로 token을 받음
-        String host="https://kauth.kakao.com/oauth/token";
+        String host = "https://kauth.kakao.com/oauth/token";
         URL url = new URL(host);
         HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
         String token = "";
@@ -25,8 +37,8 @@ public class Service {
             BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(urlConnection.getOutputStream()));
             StringBuilder sb = new StringBuilder();
             sb.append("grant_type=authorization_code");
-            sb.append("&client_id=76c8d383592ae5a8f0ca3ba686b2c816"); //발급받은 REST API Key
-            sb.append("&redirect_uri=http://localhost:8080/member/kakao");
+            sb.append("&client_id=CLIENT_ID"); //발급받은 REST API Key
+            sb.append("&redirect_uri=REDIRECT_URL");
             sb.append("&code=" + code);
 
             bw.write(sb.toString());
@@ -59,39 +71,38 @@ public class Service {
             //BufferReader close
             br.close();
             bw.close();
-        } catch (IOException e){
+        } catch (IOException e) {
             e.printStackTrace();
-        } catch (ParseException e){
+        } catch (ParseException e) {
             e.printStackTrace();
         }
-    return token;
+        return token;
     }
 
     public Map<String, Object> getUserInfo(String access_token) throws IOException {
         String host = "https://kapi.kakao.com/v2/user/me";
         Map<String, Object> result = new HashMap<>();
-        try{
-            URL url=new URL(host);
+        try {
+            URL url = new URL(host);
 
             HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
-            urlConnection.setRequestProperty("Authorization", "Baerer"+access_token);
+            urlConnection.setRequestProperty("Authorization", "Baerer" + access_token);
             urlConnection.setRequestMethod("GET");
 
             int responseCode = urlConnection.getResponseCode();
-            System.out.println("responseCode = "+responseCode);
+            System.out.println("responseCode = " + responseCode);
 
             BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-            String line="";
-            String res="";
-            while((line=br.readLine())!=null)
-            {
-                res+=line;
+            String line = "";
+            String res = "";
+            while ((line = br.readLine()) != null) {
+                res += line;
             }
 
             System.out.println("res = " + res);
 
-            JSONParser parser=new JSONParser();
-            JSONObject obj=(JSONObject) parser.parse(res);
+            JSONParser parser = new JSONParser();
+            JSONObject obj = (JSONObject) parser.parse(res);
             JSONObject kakao_account = (JSONObject) obj.get("kakao_account");
             JSONObject properties = (JSONObject) obj.get("properties");
 
@@ -105,26 +116,25 @@ public class Service {
 
             br.close();
 
-        } catch (IOException | ParseException e){
+        } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
         return result;
     }
 
-    public String getAgreementInfo(String access_token){
+    public String getAgreementInfo(String access_token) {
         String result = "";
         String host = "https://kapi.kakao.com/v2/user/scopes";
-        try{
-            URL url=new URL(host);
-            HttpURLConnection urlConnection=(HttpURLConnection)url.openConnection();
+        try {
+            URL url = new URL(host);
+            HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
             urlConnection.setRequestMethod("GET");
-            urlConnection.setRequestProperty("Authorization","Bearer"+access_token);
+            urlConnection.setRequestProperty("Authorization", "Bearer" + access_token);
 
-            BufferedReader br=new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
-            String line="";
-            while((line=br.readLine())!=null)
-            {
-                result+=line;
+            BufferedReader br = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                result += line;
             }
 
             int responseCode = urlConnection.getResponseCode();
@@ -141,7 +151,7 @@ public class Service {
             e.printStackTrace();
         }
         return result;
-    }
-        }
+
     }
 }
+

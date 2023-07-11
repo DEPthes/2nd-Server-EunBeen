@@ -1,16 +1,13 @@
 package com.SrpingBoot.Shopping.Member;
 
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Builder
-public class Dto {
+public class MemberDto {
     @Data
     public static class CreateMemberRequest {
         private String name;

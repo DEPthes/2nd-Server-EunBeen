@@ -1,5 +1,4 @@
 package com.SrpingBoot.Shopping.Address;
 
-public class Dto {
-
+public interface AddressRepository {
 }
