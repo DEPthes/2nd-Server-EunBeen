@@ -3,7 +3,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Insert title here</title>
+    <title>카카오 로그인 진입</title>
 </head>
 <body>
 <a th:href="@{https://kauth.kakao.com/oauth/authorize(client_id=${CLIENT_ID}, redirect_uri=${REDIRECT_URL}, response_type='code')}">카카오 로그인 진행하기</a>
