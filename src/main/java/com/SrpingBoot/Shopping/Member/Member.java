@@ -2,14 +2,18 @@ package com.SrpingBoot.Shopping.Member;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 
 @Entity
 @Table(name="member")
 @Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Member {
 
     @Id
@@ -33,11 +37,14 @@ public class Member {
     @Column(name="POINT")
     private int point;
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-
-
-
-//    @OneToMany(mappedBy="member") //연관 관계의 주인이 아님을 표시
+    public void setName(String name) {
+        this.name = name;
+    }
+    //    @OneToMany(mappedBy="member") //연관 관계의 주인이 아님을 표시
 //    private List<Order> orders = new ArrayList<>();
 
 }
