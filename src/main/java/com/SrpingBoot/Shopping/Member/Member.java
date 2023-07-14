@@ -37,13 +37,8 @@ public class Member {
     @Column(name="POINT")
     private int point;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
 
-    public void setName(String name) {
-        this.name = name;
-    }
+
     //    @OneToMany(mappedBy="member") //연관 관계의 주인이 아님을 표시
 //    private List<Order> orders = new ArrayList<>();
 
