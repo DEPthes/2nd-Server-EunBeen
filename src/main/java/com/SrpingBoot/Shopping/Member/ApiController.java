@@ -6,6 +6,7 @@ import jakarta.persistence.EntityTransaction;
 import jakarta.persistence.Persistence;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 //@Controller , @ResponseBody를 포함한 @RestController
@@ -14,69 +15,36 @@ import org.springframework.web.bind.annotation.*;
 public class ApiController {
     private final MemberService memberService;
 
-//    @PostMapping("/api/members")
-//    public ResponseEntity<MemberDto.MemberResponse> saveMember(@RequestBody @Valid MemberDto.CreateMemberRequest request) {
-//        Member member = Member.builder()
-//                .name(request.getName())
-//                .password(request.getPassword())
-//                .email(request.getEmail())
-//                .point(request.getPoint())
-//                .build();
-//
-//        Long id = service.join(member);
-//
-//        MemberDto.MemberResponse response = MemberDto.MemberResponse.builder()
-//                .id(id)
-//                .name(member.getName())
-//                .email(member.getEmail())
-//                .point(member.getPoint())
-//                .build();
-//
-//        return ResponseEntity.ok(response);
-//    }
 
+    // api 요청 스펙을 위한 별도의 DTO를 만들고 파라미터로 받아야 합니다.
+    //회원 등록 api
     @PostMapping("/api/members")
-    public void saveMember(@RequestBody @Valid MemberDto.CreateMemberRequest request) {
-        Member member = Member.builder()
-                .name(request.getName())
-                .password(request.getPassword())
-                .email(request.getEmail())
-                .point(request.getPoint())
-                .build();
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("hello");
-        EntityManager em = emf.createEntityManager();
+    public MemberDto.CreateMemberResponse saveMember(@RequestBody @Valid MemberDto.CreateMemberRequest request){
+        MemberDto member=new MemberDto();
+        Long id=memberService.join(member);
+        member=MemberDto.builder()
+                        .id(id)
+                        .name(request.getName())
+                        .password(request.getPassword())
+                        .email(request.getEmail())
+                        .build();
 
-        EntityTransaction tx = em.getTransaction();
-        //transaction 시작
-        tx.begin();
-        try {
 
-            //이름, 비밀번호 persist()
-            member.setName(request.getName());
-            member.setName(request.getPassword());
-
-            em.persist(member);
-
-            tx.commit();
-
-        } catch (Exception e) {
-            tx.rollback();
-        } finally {
-            em.close();
-        }
-        emf.close();
+        return new MemberDto.CreateMemberResponse(id);
     }
-}
 
 //    @GetMapping("/api/members/{id}")
-//    public ResponseEntity<Dto.GetMemberResponse> getMember(@PathVariable Long id) {
-//        Member member = service.getMemberById(id);
+//    public ResponseEntity<MemberDto.CreateMemberResponse> getMember(@PathVariable Long id) {
+//        Member member = MemberService.getMemberById(id);
 //        if (member == null) {
 //            return ResponseEntity.notFound().build();
 //        }
-//        Dto.GetMemberResponse response = new Dto.GetMemberResponse(member.getId(), member.getName());
+//        MemberDto.CreateMemberResponse response = new MemberDto.CreateMemberResponse(member.getId(), member.getName());
 //        return ResponseEntity.ok(response);
 //    }
+}
+
+
 
 
 
