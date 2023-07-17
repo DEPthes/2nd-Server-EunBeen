@@ -1,15 +1,17 @@
 package com.SrpingBoot.Shopping.Address;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-
-//@Embeddable
-
+@Entity
 @Table(name="ADDRESS")
 @Getter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Address {
     @Id @Column(name="MEMBER_ID")
     private Long id;
@@ -24,11 +26,5 @@ public class Address {
     @Column(name="ADDRESS")
     private String address;
 
-    public static AddressBuilder builder(Long id,String zip_code, String city, String address){
-        return new AddressBuilder()
-                .id(id)
-                .zip_code(zip_code)
-                .city(city)
-                .address(address);
-    }
+
 }
