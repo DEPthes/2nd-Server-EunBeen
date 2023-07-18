@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>회원 삭제</title>
+</head>
+<body>
+<h1>회원 삭제</h1>
+<form action="/members/exit" method="POST">
+    <label for="id">삭제할 회원 ID:</label>
+    <input type="text" id="id" name="id">
+    <br>
+    <button type="submit">삭제</button>
+</form>
+</body>
+</html>
