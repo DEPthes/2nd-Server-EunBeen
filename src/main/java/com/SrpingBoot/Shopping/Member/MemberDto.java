@@ -1,28 +1,39 @@
 package com.SrpingBoot.Shopping.Member;
 
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
-@Data
+import jakarta.validation.constraints.NotEmpty;
+import lombok.*;
+
 @NoArgsConstructor
-//@AllArgsConstructor
+@AllArgsConstructor
 @Builder
+@Data
 public class MemberDto {
+
+    private Long id;
+    private String name;
+    private String password;
+    private String email;
+    private int point;
+
     @Data
-    public static class CreateMemberRequest {
+    static class CreateMemberRequest{
+        @NotEmpty
         private String name;
+        @NotEmpty
         private String password;
+        @NotEmpty
         private String email;
-        private int point;
     }
 
     @Data
-
-    public static class MemberResponse {
+    static class CreateMemberResponse {
         private Long id;
-        private String name;
-        private String email;
         private int point;
+
+        public CreateMemberResponse(Long id) {
+            this.id = id;
+            this.point = 0;
+        }
     }
 
 }
