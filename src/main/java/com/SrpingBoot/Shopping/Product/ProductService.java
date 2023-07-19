@@ -1,4 +1,6 @@
 package com.SrpingBoot.Shopping.Product;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -33,5 +35,9 @@ public class ProductService {
     public void deleteById(Long id) { productRepository.deleteById(id); }
 
     public void update(Product product) { productRepository.save(product); }
+
+    public Page<Product> productList(Pageable pageable) {
+        return productRepository.findAll(pageable);
+    }
 }
 
