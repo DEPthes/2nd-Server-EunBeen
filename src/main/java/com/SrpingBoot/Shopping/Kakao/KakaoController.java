@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.*;
 
 @Controller
-@RequestMapping("/member")
+@RequestMapping("/kakao-login")
 public class KakaoController {
 
     @Autowired
